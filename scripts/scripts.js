@@ -18,11 +18,18 @@ window.hlx.RUM_GENERATION = 'project-1'; // add your RUM generation information 
 
 function buildHeroBlock(main) {
   const h1 = main.querySelector('h1');
-  const picture = main.querySelector('picture');
+  const p = h1.nextElementSibling;
+  const golfRankingP = p.nextElementSibling;
+  const pictures =  main.querySelectorAll('picture');
+  const mainHeroBackgroundPic = pictures[0];
+  const overLayPicture = pictures[1];
+  overLayPicture.className = "overlaypic";
+  p.className = "game-data-label hero-text";
+  h1.className = "hero-text";
   // eslint-disable-next-line no-bitwise
-  if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
+  if (h1 && mainHeroBackgroundPic && (h1.compareDocumentPosition(mainHeroBackgroundPic) & Node.DOCUMENT_POSITION_PRECEDING)) {
     const section = document.createElement('div');
-    section.append(buildBlock('hero', { elems: [picture, h1] }));
+    section.append(buildBlock('hero', { elems: [mainHeroBackgroundPic,overLayPicture, h1 ,p, golfRankingP] }));
     main.prepend(section);
   }
 }
