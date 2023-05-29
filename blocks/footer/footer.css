@@ -1,14 +1,97 @@
-footer {
-  padding: 2rem;
+footer { /* footer tag */
+  /*padding: 2rem;
   background-color: var(--overlay-background-color);
-  font-size: var(--body-font-size-s);
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;*/
 }
 
-footer .footer {
-  max-width: 1200px;
+.footer { /* . is class selector,  second foooter is class selector */
+  max-width: auto;
   margin: auto;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  display: block;
 }
 
-footer .footer p {
-  margin: 0;
+.footer > div {
+  /*width: 100%;
+  padding: 100px 15%;*/
+  background: #333;
+  color: #efefef;
+  width: 100%;
+  padding:0 8rem; /*top/bottom, left/right */
+  box-sizing: border-box;
+
 }
+
+.footer div > div:first-child{ /* > child selector, div tag after div tag, and apply css only on first child*/
+  width: 100%;
+  display: grid;
+
+  grid-template-columns: 1fr 2fr 1fr;
+  padding:40px 0;
+  box-sizing: border-box;
+ 
+}
+
+.footer > div > div{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 0.251px solid grey;
+  
+}
+
+.footer > div > div > p > picture > img {
+  width: 10rem;
+  height: fit-content;
+}
+
+.footer > div > div > ul  {
+ display: grid;
+ gap:0.5rem;
+
+}
+
+.footer > div > div > ul > li:hover {
+  color: #AE9247;
+  cursor: pointer;
+}
+
+.footer ul {
+  padding-left: 20px;
+  font-size: 12px;
+  list-style: none;
+}
+
+.footer li:first-child{
+  text-transform: uppercase;
+}
+
+.footer a:any-link{
+  text-decoration: none;
+  color: inherit;
+}
+
+/*footer .footer div > div > h3{
+  font-weight: 300;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}*/
+
+
+
+
+/*footer .footer p {
+  margin: 0;
+}*/
+
+/*grid item*/
+.footer div > p { /* > is child selector after p tag after div is present.*/
+  font-size: 12px;
+  /*background-color: red*/;
+
+}
+
+
