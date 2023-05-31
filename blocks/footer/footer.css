@@ -9,27 +9,27 @@ footer { /* footer tag */
   max-width: auto;
   margin: auto;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   display: block;
+  
 }
 
 .footer > div {
   /*width: 100%;
   padding: 100px 15%;*/
-  background: #333;
+  background: black;
   color: #efefef;
   width: 100%;
-  padding:0 8rem; /*top/bottom, left/right */
+  padding:0 18rem; /*top/bottom, left/right */
   box-sizing: border-box;
 
 }
-
-.footer div > div:first-child{ /* > child selector, div tag after div tag, and apply css only on first child*/
+ 
+.footer  div > div:first-child{ /* > child selector, div tag after div tag, and apply css only on first child*/
   width: 100%;
   display: grid;
-
   grid-template-columns: 1fr 2fr 1fr;
-  padding:40px 0;
+  padding:20px 0 40px; /* top left/right bottom */
   box-sizing: border-box;
  
 }
@@ -40,19 +40,25 @@ footer { /* footer tag */
   justify-content: space-between;
   align-items: center;
   border-top: 0.251px solid grey;
+  padding: 1rem 0 2rem;
   
 }
 
 .footer > div > div > p > picture > img {
-  width: 10rem;
+  width: 14.5rem;
   height: fit-content;
+
 }
 
 .footer > div > div > ul  {
  display: grid;
- gap:0.5rem;
+ gap:1rem;
+ font-size: 11px;
+ font-weight: 400 ;
+ cursor: pointer;
 
 }
+
 
 .footer > div > div > ul > li:hover {
   color: #AE9247;
@@ -60,13 +66,15 @@ footer { /* footer tag */
 }
 
 .footer ul {
-  padding-left: 20px;
-  font-size: 12px;
+   padding-left: 20px;
+  /*font-size: 12px;*/
   list-style: none;
 }
 
-.footer li:first-child{
+.footer li:first-child{ /* need to change font-size and family */
   text-transform: uppercase;
+  font-size: 11.5px;
+  /*font-weight: 600;*/
 }
 
 .footer a:any-link{
@@ -74,22 +82,54 @@ footer { /* footer tag */
   color: inherit;
 }
 
-/*footer .footer div > div > h3{
-  font-weight: 300;
-  margin-bottom: 30px;
-  letter-spacing: 1px;
-}*/
+
+.footer li > span{ /* span : container */
+ fill:white;
+ background: green;
+ /*height: 30px;
+ width: 30px;  As i have added display:block or flex, it is not needed*/
+ border-radius: 2px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: 2px;
+}
+
+.footer li > span > svg{ /* svg is item */
+  height: 16px;
+  width: 16px;
+  border: 0;
+  box-sizing: border-box;
+  margin:6px;
+  align-self: center;
+}
 
 
+ .footer div > div > ul:last-child > li:first-child{ /* follow us*/
+  margin-right: 30px;
+  
+  text-transform:capitalize ;
+  
 
+}
 
-/*footer .footer p {
-  margin: 0;
-}*/
+.footer div > div > ul:last-child > li:first-child:hover{
+  cursor: default;
+  color: white;
+}
+
+.footer div > div > ul:last-child{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap:wrap;
+
+}
 
 /*grid item*/
 .footer div > p { /* > is child selector after p tag after div is present.*/
-  font-size: 12px;
+  font-size: 10px;
+  padding-left: 20px;
   /*background-color: red*/;
 
 }
