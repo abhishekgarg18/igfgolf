@@ -45,7 +45,7 @@ footer { /* footer tag */
 }
 
 .footer > div > div > p > picture > img {
-  width: 14.5rem;
+  width: 200px;
   height: fit-content;
 
 }
@@ -53,8 +53,8 @@ footer { /* footer tag */
 .footer > div > div > ul  {
  display: grid;
  gap:1rem;
- font-size: 11px;
- font-weight: 400 ;
+ font-size: 1.4rem;
+ font-weight: 500;
  cursor: pointer;
 
 }
@@ -73,8 +73,8 @@ footer { /* footer tag */
 
 .footer li:first-child{ /* need to change font-size and family */
   text-transform: uppercase;
-  font-size: 11.5px;
-  /*font-weight: 600;*/
+  font-size: 1.4rem;
+  font-weight: 700;
 }
 
 .footer a:any-link{
@@ -92,7 +92,7 @@ footer { /* footer tag */
  display: flex;
  align-items: center;
  justify-content: center;
- padding: 2px;
+ padding: 6px;
 }
 
 .footer li > span > svg{ /* svg is item */
@@ -107,7 +107,7 @@ footer { /* footer tag */
 
  .footer div > div > ul:last-child > li:first-child{ /* follow us*/
   margin-right: 30px;
-  
+  font-weight: 500;
   text-transform:capitalize ;
   
 
@@ -128,7 +128,7 @@ footer { /* footer tag */
 
 /*grid item*/
 .footer div > p { /* > is child selector after p tag after div is present.*/
-  font-size: 10px;
+  font-size: 1.2rem;
   padding-left: 20px;
   /*background-color: red*/;
 
