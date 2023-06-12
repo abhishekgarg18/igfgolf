@@ -67,19 +67,38 @@ class Carousel {
     const navLeft = this.block.parentNode.querySelector('.carousel-nav-left');
     const selectedItem = this.block.querySelectorAll('.carousel-item.show');
     const hiddenItem = this.block.querySelectorAll('.carousel-item.hidden');
+    const allItems = this.block.querySelectorAll('.carousel-item');
     const carouselItems = this.block.querySelector('.carousel-items') ;
-    carouselItems.style = "animation:1s; left: 0px; transform: translateX(-100%);"
+
+    var highestItemNumber = 0 ;
+    var shownItemNumber = 0 ;
+    allItems.forEach(e => {
+      highestItemNumber = e.tabIndex ;
+    }) ;
+    selectedItem.forEach(e => {
+      shownItemNumber = e.tabIndex ;
+    }) ;
+
+    var rotationDegree =  (shownItemNumber + 1)*(-100) ;
+
+    carouselItems.style = "animation:1s; left: 0px; transform: translateX(" + rotationDegree +"%);"
 
     hiddenItem.forEach(e => {
-      e.classList.add("show")
-      e.classList.remove("hidden")
+      if( e.tabIndex == (shownItemNumber + 1  )) {
+        e.classList.add("show")
+        e.classList.remove("hidden")
+      }
     }) ;
-    navRight.classList.add('disabled');
+    if( (shownItemNumber + 1)  == highestItemNumber ) {
+      navRight.classList.add('disabled');
+    }
     navLeft.classList.remove('disabled');
+
     selectedItem.forEach(e => {
       e.classList.remove("show")
       e.classList.add("hidden")
     }) ;
+    
   }
 
   /**
@@ -91,18 +110,33 @@ class Carousel {
     const selectedItem = this.block.querySelectorAll('.carousel-item.show');
     const hiddenItem = this.block.querySelectorAll('.carousel-item.hidden');
     const carouselItems = this.block.querySelector('.carousel-items') ;
-    carouselItems.style = "animation:1s; left: 0px; transform: translateX(0%);" ;
+    //carouselItems.style = "animation:1s; left: 0px; transform: translateX(0%);" ;
 
-    hiddenItem.forEach(e => {
-      e.classList.add("show")
-      e.classList.remove("hidden")
+    var shownItemNumber =  0 ;
+
+    selectedItem.forEach(e => {
+      shownItemNumber = e.tabIndex ;
     }) ;
+
+    var rotationDegree =  (shownItemNumber - 1)*(-100) ;
+
+    carouselItems.style = "animation:1s; left: 0px; transform: translateX(" + rotationDegree +"%);"
+  
+    hiddenItem.forEach(e => {
+      if( e.tabIndex == (shownItemNumber - 1  )) {
+        e.classList.add("show")
+        e.classList.remove("hidden")
+      }
+    }) ;
+    if((shownItemNumber - 1) == 0 ) {
+      navLeft.classList.add('disabled');
+    }
     navRight.classList.remove('disabled');
-    navLeft.classList.add('disabled');
     selectedItem.forEach(e => {
       e.classList.remove("show")
       e.classList.add("hidden")
     }) ;
+   
   }
 
   /**
@@ -191,10 +225,15 @@ class Carousel {
   }
 
   async render() {
+    
     // copy carousel styles to the wrapper too
     this.block.parentElement.classList.add(
       ...[...this.block.classList].filter((item, idx) => idx !== 0 && item !== 'block'),
     );
+    //const carouselItems = this.block.querySelector('.carousel-items') ;
+    // if ( carouselItems) {
+    //   carouselItems.remove() ;
+    // }  
 
     let defaultCSSPromise;
     if (Array.isArray(this.cssFiles) && this.cssFiles.length > 0) {
@@ -220,16 +259,17 @@ class Carousel {
     const carousalItemContainer = document.createElement('div');
     carousalItemContainer.className = 'carousel-items';
     this.block.appendChild(carousalItemContainer);
-
+    var limit = getLimit() ;
+  
     let count = 0;
     this.data.forEach((item, i) => {
       const itemContainer = document.createElement('div');
       itemContainer.className = 'carousel-item';
-      itemContainer.style="position: absolute; left:" +count*20+"%;"
-      itemContainer.tabIndex=0;
-      if(count > 4){
+      itemContainer.style="position: absolute; left:" +count*(100/(limit + 1)) +"%;"
+      itemContainer.tabIndex= count/(limit+ 1);
+
+      if(count > limit){
         itemContainer.ariaHidden="true";
-        itemContainer.tabIndex=-1;
         itemContainer.classList.add("hidden") ;
       } else{
         itemContainer.classList.add("show") ;
@@ -251,6 +291,18 @@ class Carousel {
   }
 }
 
+function getLimit() {
+  var x = window.matchMedia("(max-width: 600px)") ;
+
+  var y = window.matchMedia("(max-width: 1000px)") ;
+  if(x.matches && y.matches) {
+      return 2 ;
+  } else if (!x.matches && y.matches) {
+      return 3
+  } else {
+      return 4 ;
+  }
+}
 /**
  * Create and render default carousel.
  * Best practice: Create a new block and call the function, instead using or modifying this.
@@ -263,51 +315,19 @@ class Carousel {
  */
 export async function createCarousel(block, data, config) {
   const carousel = new Carousel(block, data, config);
+ 
   await carousel.render();
   return carousel;
 }
 
-/**
- * Custom card style config and rendering of carousel items.
- */
-export function renderCardItem(item) {
-  item.classList.add('card');
-  item
-    .querySelectorAll('.button-container a')
-    .forEach((a) => a.append(span({ class: 'icon icon-chevron-right-outline', 'aria-hidden': true })));
-  decorateIcons(item);
-  return item;
-}
 
-const cardStyleConfig = {
-  cssFiles: ['/blocks/carousel/carousel-cards.css'],
-  navButtons: true,
-  dotButtons: false,
-  infiniteScroll: true,
-  autoScroll: false,
-  visibleItems: [
-    {
-      items: 1,
-      condition: () => window.screen.width < 768,
-    },
-    {
-      items: 2,
-      condition: () => window.screen.width < 1200,
-    }, {
-      items: 3,
-    },
-  ],
-  renderItem: renderCardItem,
-};
 
-export default async function decorate(block) {
-  // cards style carousel
-  const useCardsStyle = block.classList.contains('cards');
-  if (useCardsStyle) {
-    await createCarousel(block, [...block.children], cardStyleConfig);
-    return;
-  }
 
+export default async function decorate(block, data, config) {
   // use the default carousel
-  await createCarousel(block);
+  await createCarousel(block, data, config);
+  window.onresize = function(event) { 
+    window.location.reload();
+  } ;
 }
+

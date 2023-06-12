@@ -75,7 +75,6 @@ main .carousel-container {
   @media only screen and (max-width: 991px) {
     main .carousel-item-columns-container {
       flex-direction: column;
-      gap: 30px;
     }
   
     main .carousel-item-column {
@@ -349,6 +348,16 @@ main .carousel-container {
     right: -1.5em;
     bottom: -60px;
   }
+
+  .carousel-items {
+    display: flex;
+    flex-direction: row;
+    transform: translateX(0%);
+    width: 80%;
+    margin-left: 200px;
+    max-width: 1200px;
+    height: 300px;
+  }
   
   @media only screen and (max-width: 992px) {
     main .carousel blockquote::before,
@@ -367,6 +376,14 @@ main .carousel-container {
       right: 0;
       bottom: 0;
     }
+
+    main div.carousel-wrapper {
+      height: 250px;
+    }
+    main .carousel-item-image img {
+      height: 137px;
+      margin: 0px 0px;
+    }
   }
   
   @media only screen and (max-width: 767px) {
@@ -376,6 +393,18 @@ main .carousel-container {
   
     main .carousel .carousel-item .carousel-item-text blockquote + p {
       font-size: 18px;
+    }
+    .carousel-items {
+      margin-left: 100px;
+      height: 140px;
+    }
+    main .carousel-item-image img {
+      height: 80px;
+      margin: 0px 0px;
+    }
+
+    main div.carousel-wrapper {
+      height: 200px;
     }
   }
 
@@ -423,15 +452,7 @@ main .carousel-nav-button {
   background-repeat: no-repeat;
   color: none;
 }
-.carousel-items {
-  display: flex;
-  flex-direction: row;
-  transform: translateX(0%);
-  margin-left: 200px;
-  width: 80%;
-  max-width: 1200px;
-  height: 300px;
-}
+
 
 .carousel-items.hidden{
   display: none;
