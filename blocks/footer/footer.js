@@ -17,8 +17,5 @@ export default async function decorate(block) {
   await decorateIcons(footer);
   block.append(footer);
 
-  document.querySelectorAll('.footer block"').forEach((item) => {
-    item.querySelector('div');
-    
-  });
+
 }
