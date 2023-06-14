@@ -85,6 +85,7 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   }
 }
 
+
 /**
  * decorates the header, mainly the nav
  * @param {Element} block The header block element
@@ -100,15 +101,34 @@ export default async function decorate(block) {
     const html = await resp.text();
 
     // decorate nav DOM
+    
+   const tmp  = document.createElement("div");
+   tmp.innerHTML= html;
+
+   /// decorate new dom
     const nav = document.createElement('nav');
-    nav.id = 'nav';
+    const navbar = document.createElement('navbar');
+    navbar.setAttribute('id','navbar')
+    navbar.classList.add('navbar')
+    nav.append(navbar);
+
+
     nav.innerHTML = html;
 
-    const classes = ['brand', 'sections', 'tools'];
+    const classes = ['brand', 'sections', 'sections', 'tools'];
+
     classes.forEach((c, i) => {
       const section = nav.children[i];
       if (section) section.classList.add(`nav-${c}`);
     });
+
+    nav.children[2].classList.add('quicklinks');
+
+    const navBarContainer = document.createElement('div');
+    navBarContainer.classList.add('nav-sections-container');
+    navBarContainer.appendChild(nav.children[1]);
+    navBarContainer.appendChild(nav.children[1]);
+    nav.insertBefore(navBarContainer, nav.children[1]);
 
     const navSections = nav.querySelector('.nav-sections');
     if (navSections) {
