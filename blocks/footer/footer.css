@@ -24,15 +24,6 @@ footer { /* footer tag */
   box-sizing: border-box;
 
 }
- 
-.footer  div > div:first-child{ /* > child selector, div tag after div tag, and apply css only on first child*/
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  padding:20px 0 40px; /* top left/right bottom */
-  box-sizing: border-box;
- 
-}
 
 .footer > div > div{
   display: flex;
@@ -42,6 +33,15 @@ footer { /* footer tag */
   border-top: 0.251px solid grey;
   padding: 1rem 0 2rem;
   
+}
+
+.footer  div > div:first-child{ /* > child selector, div tag after div tag, and apply css only on first child*/
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  padding:20px 0 40px; /* top left/right bottom */
+  box-sizing: border-box;
+ 
 }
 
 .footer > div > div > p > picture > img {
@@ -118,13 +118,15 @@ footer { /* footer tag */
   color: white;
 }
 
-.footer div > div > ul:last-child{
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex-wrap:wrap;
 
-}
+  .footer div > div > ul:last-child{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap:wrap; /* why to use flex-wrap*/
+  
+  }
+
 
 /*grid item*/
 .footer div > p { /* > is child selector after p tag after div is present.*/
@@ -133,5 +135,33 @@ footer { /* footer tag */
   /*background-color: red*/;
 
 }
+
+@media screen and (max-width: 1404px){
+  .footer  div > div:first-child{ 
+     grid-template-rows: 1fr 1fr 1fr;
+     padding:0; 
+     grid-template-columns: unset;
+     justify-content: unset;
+     align-items: unset;
+}
+
+.footer > div{
+  padding:0 2rem; /*top/bottom, left/right */
+}
+
+.footer > div > div{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ 
+  
+}
+
+.footer div > div > ul:last-child {
+  justify-content: flex-start;
+}
+}
+
+
 
 
