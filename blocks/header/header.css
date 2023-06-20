@@ -2,7 +2,6 @@
 header .nav-wrapper {
   background-color: var(--headerBgColor);
   width: 100%;
-
 }
 
 header nav {
@@ -14,7 +13,7 @@ header nav {
   align-items: center;
   gap: 0 2em;
   margin: auto;
-  max-width: 1264px;
+  max-width: 1464px;
   /* height: var(--nav-height); */
   padding: 0 1rem;
   font-family: var(--body-font-family);
@@ -142,12 +141,14 @@ header nav[aria-expanded="true"] .nav-hamburger-icon::after {
 /* brand */
 header .nav-brand {
   grid-area: brand;
-  flex-basis: 128px;
+  flex-basis: 143px;
   font-size: var(--heading-font-size-s);
   font-weight: 700;
   line-height: 1;
   padding: 30px;
   background-color: white;
+  position: relative;
+  bottom: 14px;
 }
 
 header nav .nav-brand img {
@@ -164,14 +165,17 @@ header nav .nav-sections {
   background-color: var(--overlay-color);
 }
 
-header nav .nav-sections.quicklinks {
-  background-color: var(--headerBgBottomColor);
-}
+
 
 header nav[aria-expanded="true"] .nav-sections {
   display: block;
   visibility: visible;
   align-self: start;
+}
+
+header nav[aria-expanded="true"] .nav-sections.nav-sections.quicklinks {
+  background-color: var(--headerBgBottomColor);
+  display: flex;
 }
 
 header nav .nav-sections ul {
@@ -240,9 +244,9 @@ header nav .nav-sections ul > li > ul > li {
 
   header nav .nav-sections.quicklinks ul {
     flex-wrap: wrap;
-    width:  100%;
-    line-height: 23px;
-    font-size: 1.8rem;
+    width: 100%;
+    line-height: 10px;
+    font-size: 1.7rem;
     justify-content: flex-start;
   }
 
@@ -289,4 +293,33 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+}
+
+header .nav-sections.quicklinks p{
+  display: inline;
+}
+
+.nav-tools {
+  display: flex;
+  position: relative;
+  bottom: 15px;
+
+  background: #006039;
+  text-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 25px;
+  padding-bottom: 22px;
+}
+
+.rolexClockIFrame {
+  height: 90px;
+  width: 200px;
+}
+
+
+span.icon-search {
+  position: relative;
+  top:35px;
+  right: 10px;
 }

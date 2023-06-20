@@ -162,5 +162,11 @@ export default async function decorate(block) {
     navWrapper.className = 'nav-wrapper';
     navWrapper.append(nav);
     block.append(navWrapper);
+
+
+
+    const navTools  = document.querySelector(".nav-tools");
+    const rolexIframe  = '<iframe class="rolexClockIFrame" title="Rolex Clock" data-src="https://static.rolex.com/clocks/2021/IGF_desk_HTML_200x90/rolex.html"  scrolling="NO" frameborder="NO" src="https://static.rolex.com/clocks/2021/IGF_desk_HTML_200x90/rolex.html"></iframe>'
+    navTools.innerHTML = rolexIframe;
   }
 }
