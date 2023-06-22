@@ -81,22 +81,23 @@ main .hero .hero-text {
     color: white;
 }
 
-main .hero p.button-container  {
-    background-color: green;
-    border-radius: 0;
+main .hero p.button-container {
+    background-color: var(--headerBgBottomColor);
     position: absolute;
-    right: 5px;
-    bottom: 0px; 
-    padding: 0;
- }
-   
- 
- main .hero p.button-container a {
-   text-decoration: none;
-   background-color: transparent;
-   margin: 0px;
-   padding-left: 10px;
-   padding-right: 10px;
-   font-size: medium;
+    bottom: 20px;
+    right: 20px;
+    right: calc((100vw - 1440px) / 2);
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 0px 40px;
   }
-    
+  
+  main .hero p.button-container a {
+    text-decoration: none;
+    background-color: transparent;
+    margin: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: small;
+  }
