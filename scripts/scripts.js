@@ -22,6 +22,7 @@ function buildHeroBlock(main) {
   const golfRankingP = p.nextElementSibling;
   const pictures =  main.querySelectorAll('picture');
   const mainHeroBackgroundPic = pictures[0];
+  mainHeroBackgroundPic.className = "hero-background-pic";
   const overLayPicture = pictures[1];
   overLayPicture.className = "overlaypic";
   p.className = "game-data-label hero-text";

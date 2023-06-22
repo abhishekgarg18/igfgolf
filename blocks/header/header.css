@@ -40,6 +40,13 @@ header nav[aria-expanded="true"] {
     display: flex;
     /* justify-content: space-between; */
     gap: 0px;
+    align-items: stretch;
+  }
+
+  header nav .nav-sections-container {
+    display: flex;
+    flex-flow: column;
+}
   }
 
   header nav[aria-expanded="true"] {
@@ -148,7 +155,6 @@ header .nav-brand {
   padding: 30px;
   background-color: white;
   position: relative;
-  bottom: 14px;
 }
 
 header nav .nav-brand img {
@@ -291,25 +297,17 @@ header nav .nav-sections ul > li > ul > li {
 }
 
 /* tools */
-header nav .nav-tools {
-  grid-area: tools;
-}
-
-header .nav-sections.quicklinks p{
+header .nav-sections.quicklinks p {
   display: inline;
 }
 
 .nav-tools {
+  grid-area: tools;
   display: flex;
-  position: relative;
-  bottom: 15px;
-
   background: #006039;
   text-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding-top: 25px;
-  padding-bottom: 22px;
 }
 
 .rolexClockIFrame {

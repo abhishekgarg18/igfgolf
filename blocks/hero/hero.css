@@ -43,8 +43,6 @@ main .hero img {
 }
 
 
-
-
 /** custom  changes **/
 
 
@@ -54,11 +52,11 @@ main .section .hero-wrapper {
 }
 
 main .hero picture.overlaypic {
-    width: 260px;
+    width: 300px;
     height: 280px;
     position: absolute;
     top: 20%;
-    left: 10%;
+    left: calc(10% - (100% - 100vw) / 2);
     opacity: 1;
     padding-right: 50px;
     border-right: 1px white solid;
@@ -69,15 +67,20 @@ main .hero picture.overlaypic img {
   object-fit: contain;
 }
 
-h1#olympic-games {
-    display: inline;
-}
 
 main .hero .hero-text {
     position: relative;
     top: 50px;
-    left: 30%;
+    left: calc(30% + (100% - 90vw) / 2);
     color: white;
+}
+
+
+h1#olympic-games {
+    display: block;
+    font-size: 40px;
+    z-index: 1;
+    margin-left: 10px;
 }
 
 main .hero p.button-container {
